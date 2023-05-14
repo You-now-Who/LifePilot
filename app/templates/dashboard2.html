@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<form action="" method="post">
+    <select name="symptoms" multiple>
+      {% for symptom in symptoms %}
+      <option value="{{ symptom }}">{{ symptom }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+  
+
+
+{% endblock %}
