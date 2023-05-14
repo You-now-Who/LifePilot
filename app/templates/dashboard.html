@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% set person = person %}
+{% set health_data = health_data %}
+{% set upcoming_appointments = upcoming_appointments %}
+{% set medication_reminders = medication_reminders %}
+
+{% block content %}
+
+<div class="container">
+  <h1 class="mt-5">Welcome, {{ person.name }}!</h1>
+  
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <h2>Health Data</h2>
+      <ul class="list-group">
+        {{ health_data }}
+        {% for data in health_data %}
+        <li class="list-group-item">
+          <strong>Date:</strong> {{ data.date }}<br>
+          <strong>Weight:</strong> {{ data.weight }} kg<br>
+          <strong>Blood Pressure:</strong> {{ data.blood_pressure }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    
+    <div class="col-md-6">
+      <h2>Upcoming Appointments</h2>
+      <ul class="list-group">
+        {% for appointment in upcoming_appointments %}
+        <li class="list-group-item">
+          <strong>Date:</strong> {{ appointment.date }}<br>
+          <strong>Doctor:</strong> {{ appointment.doctor }}<br>
+          <strong>Location:</strong> {{ appointment.location }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <h2>Medication Reminders</h2>
+      <ul class="list-group">
+        {% for reminder in medication_reminders %}
+        <li class="list-group-item">
+          <strong>Medication:</strong> {{ reminder.medication }}<br>
+          <strong>Dosage:</strong> {{ reminder.dosage }}<br>
+          <strong>Time:</strong> {{ reminder.time }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    
+    <div class="col-md-6">
+      <!-- Add additional personalized modules here -->
+    </div>
+  </div>
+  
+</div>
+
+{% endblock %}
